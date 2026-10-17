@@ -212,5 +212,5 @@ export async function uploadCover(formData: FormData): Promise<ActionResult<{ ur
 }
 
 export async function signOutAction() {
-  await signOut({ redirectTo: "/admin/login" });
+  await signOut({ redirectTo: "/" });
 }

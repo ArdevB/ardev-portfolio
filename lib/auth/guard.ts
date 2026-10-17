@@ -1,11 +1,11 @@
 import "server-only";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { auth, isAdminSession } from "./index";
 
-/** For admin pages: redirect anyone who isn't the admin. */
+/** For admin pages: anyone who isn't the admin gets a 404 (the admin area stays hidden). */
 export async function requireAdminPage() {
   const session = await auth();
-  if (!isAdminSession(session)) redirect("/admin/login");
+  if (!isAdminSession(session)) notFound();
   return session!;
 }
 
